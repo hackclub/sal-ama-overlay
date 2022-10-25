@@ -1,0 +1,19 @@
+/* Delete these styles and add your own styles here! */
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh
+
+
+}
+
+.row-two {
+  flex-grow: 1;
+}
+
+.row-three {
+  color: var(--green);
+  background: var(--dark);
+  padding: var(--spacing-3)
+}
