@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Stream | Sal Khan AMA</title>
     <meta charset="utf-8" />
-    <title>Sal Khan AMA Overlay</title>
     <link rel="stylesheet" href="https://css.hackclub.com/theme.css" />
     <link rel="stylesheet" href="style.css" />
-
-    <meta property="og:title" content="Sal Khan AMA Overlay" />
-    <meta name="twitter:title" content="Sal Khan AMA Overlay" />
-    <meta name="description" content="Sal Khan AMA Overlay" />
-    <meta property="og:description" content="Sal Khan AMA Overlay" />
-    <meta name="twitter:description" content="Sal Khan AMA Overlay" />
   </head>
 
   <body>
@@ -25,9 +19,17 @@
         AMA with Sal Khan, creator of Khan Academy
       </h2>
       <h3>
-        Sam, Singapore
+        <!-- Dynamic value for current speaker -->
+        <span id="stateful-name">Sam Poder, Singapore</span>
       </h3>
     </div>
   </body>
-  <script src="script.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/stream.js"></script>
+    <script>
+      // Add a URL hash (ie. #test) to turn on a placeholder background
+      if (location.hash) {
+        document.body.style.background = "url('https://cloud-4y3onlw34-hack-club-bot.vercel.app/0screen_shot_2022-10-25_at_19.37.45.png') no-repeat center center fixed"
+      }
+    </script>
 </html>
