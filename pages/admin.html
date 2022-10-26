@@ -46,6 +46,9 @@
                 addRecentOption();
                 socket.emit('nameChange', { newName: $('#mySelect2').select2('data')?.[0]?.text });
             });
+            $('#mySelect2').on('select2:open', () => {
+                document.querySelector('input.select2-search__field[type=search]').focus();
+            });
         });
 
     </script>

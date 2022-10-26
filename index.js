@@ -46,6 +46,7 @@ io.on('connection', (socket) => {
     });
     socket.on('nameChange', ({ newName }) => {
         streamState.name = newName;
+        console.log('Name change:', newName);
         io.emit('nameChange', { newName });
     });
 });  
