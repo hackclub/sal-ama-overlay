@@ -5,7 +5,7 @@ import http from 'http';
 import { Server as SocketIoServer } from 'socket.io';
 
 const streamState = {
-
+    name: 'Waiting for initial subtitle entry...'
 };
 
 dotenv.config();
@@ -32,6 +32,11 @@ app.get('/dev', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'pages', 'admin.html'));
+});
+
+app.get('/api/name', (req, res) => {
+    res.header('type', 'text/plain');
+    res.send(streamState.name);
 });
 
 io.on('connection', (socket) => {

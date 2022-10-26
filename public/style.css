@@ -25,6 +25,14 @@ body {
   padding: var(--spacing-3);
 }
 
+.row-three > h2 {
+  font-size: 4vh;
+}
+
+.row-three > h3 {
+  font-size: 5vh;
+}
+
 #stateful-name {
   white-space: pre;
 }

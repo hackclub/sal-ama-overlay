@@ -16,7 +16,7 @@
             <h1 class="headline">Subtitle</h1>
             <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                 <select id="mySelect2" style="width: 100%;">
-                    <option> </option>
+                    <option class="initial-option"></option>
                 </select>
             </div>
         </div>
@@ -27,11 +27,6 @@
         let socket = io();
         // socket.emit('nameChange', { newName: prompt('new name') });
 
-        $('#mySelect2').select2({
-            dropdownParent: $('#myModal'),
-            tags: true
-        });
-
         function addRecentOption () {
             const addedOption = document.querySelector('[data-select2-tag=true]');
             if (addedOption) {
@@ -41,9 +36,16 @@
             }
         }
 
-        $('#mySelect2').on('select2:select', () => {
-            addRecentOption();
-            socket.emit('nameChange', { newName: $('#mySelect2').select2('data')?.[0]?.text });
+        fetch('/api/name').then(resp => resp.text()).then(name => {
+            document.querySelector('.initial-option').innerText = name;
+            $('#mySelect2').select2({
+                dropdownParent: $('#myModal'),
+                tags: true
+            });
+            $('#mySelect2').on('select2:select', () => {
+                addRecentOption();
+                socket.emit('nameChange', { newName: $('#mySelect2').select2('data')?.[0]?.text });
+            });
         });
 
     </script>
