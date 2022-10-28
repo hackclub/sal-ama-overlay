@@ -16,23 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new SocketIoServer(server);
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'index.html'));
-});
-
-app.get('/stream', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'stream.html'));
-});
-
-app.get('/dev', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'dev.html'));
-});
-
-app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', 'admin.html'));
-});
+app.use(express.static('public'))
 
 app.get('/api/name', (req, res) => {
     res.header('type', 'text/plain');
