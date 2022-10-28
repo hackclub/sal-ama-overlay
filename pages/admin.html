@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Admin | Sal Khan AMA</title>
+    <script src="/jquery361.js"></script>
+    <link href="/select2.css" rel="stylesheet"></link>
+    <script src="/select2.js"></script>
+    <link href="/admin.css" rel="stylesheet"></link>
+</head>
+<body>
+    <div class="container narrow" style="padding-top: var(--spacing-4);">
+        <div class="card">
+            <h1 class="headline">Subtitle</h1>
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <select id="mySelect2" style="width: 100%;">
+                    <option class="initial-option"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+        // socket.emit('nameChange', { newName: prompt('new name') });
+
+        function addRecentOption () {
+            const addedOption = document.querySelector('[data-select2-tag=true]');
+            if (addedOption) {
+                const parent = addedOption.parentElement;
+                parent.insertBefore(addedOption, parent.firstChild);
+                document.querySelector('[data-select2-tag=true]').removeAttribute('data-select2-tag');
+            }
+        }
+
+        fetch('/api/name').then(resp => resp.text()).then(name => {
+            document.querySelector('.initial-option').innerText = name;
+            $('#mySelect2').select2({
+                dropdownParent: $('#myModal'),
+                tags: true
+            });
+            $('#mySelect2').on('select2:select', () => {
+                addRecentOption();
+                socket.emit('nameChange', { newName: $('#mySelect2').select2('data')?.[0]?.text });
+            });
+            $('#mySelect2').on('select2:open', () => {
+                document.querySelector('input.select2-search__field[type=search]').focus();
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+

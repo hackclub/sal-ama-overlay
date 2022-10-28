@@ -1,0 +1,27 @@
+{
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "socket.io": "^4.5.3"
+  },
+  "name": "sal-ama-overlay",
+  "description": "Looking for a basic website template that includes Hack Club's theme CSS? Look no further!",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackclub/sal-ama-overlay.git"
+  },
+  "author": "Hack Club",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hackclub/sal-ama-overlay/issues"
+  },
+  "homepage": "https://github.com/hackclub/sal-ama-overlay#readme"
+}
