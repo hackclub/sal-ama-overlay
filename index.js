@@ -5,7 +5,7 @@ import http from 'http';
 import { Server as SocketIoServer } from 'socket.io';
 
 const streamState = {
-    name: 'Waiting for initial subtitle entry...'
+    name: ' '
 };
 
 dotenv.config();
